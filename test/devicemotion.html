@@ -26,14 +26,11 @@ div{
 
 <script src="../jquery-2.1.4.js"></script>
 <script>
-if (window.DeviceMotionEvent) {
+if ((window.DeviceMotionEvent)) {
   window.addEventListener('devicemotion', deviceMotionHandler, false);
 } else {
   document.getElementById("dmEvent").innerHTML = "Not supported on your device."
 }
-
-var acceleration = eventData.accelerationIncludingGravity;
-
 
 var SHAKE_THRESHOLD = 800;
 var last_update = 0;
