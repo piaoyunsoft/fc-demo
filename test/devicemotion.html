@@ -22,11 +22,11 @@ div{
 </style>
 </head>
 <body>
-  <div id="demo">摇了<div id="num">0</div>次</div>
+  <div id="demo">摇了<span id="num">0</span>次</div>
 
 <script src="../jquery-2.1.4.js"></script>
 <script>
-if ((window.DeviceMotionEvent) {
+if (window.DeviceMotionEvent) {
   window.addEventListener('devicemotion', deviceMotionHandler, false);
 } else {
   document.getElementById("dmEvent").innerHTML = "Not supported on your device."
