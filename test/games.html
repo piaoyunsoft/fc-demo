@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>devicemotion</title>
+<style>
+*{margin:0;padding:0;}
+body{background-color:#03A9F4;color:#fff;}
+.hide{display: none;}
+#name{display:block;margin:1em auto;width:80%;padding:.5em;border:1px solid #03A9F4;}
+#name:focus{display:block;margin:1em auto;width:80%;animation-name:breathingLight;animation-duration:3s;animation-iteration-count:infinite;}
+@-webkit-keyframes 'breathingLight'{
+  from{-webkit-box-shadow:0 0 5px #03A9F4;}
+  50%{border-color:#9C27B0;-webkit-box-shadow:0 0 10px #9C27B0;}
+  to{-webkit-box-shadow:0 0 5px #03A9F4;}
+}
+#btn{border:none;display:block;padding:.5em 1em;border-radius:5px;margin:0 auto;background-color:#FF9800;font-weight:bold;color:#fff;cursor:pointer;}
+.tips{position:fixed;left:50%;top:50%;color:#fff;background-color:rgba(0,0,0,.4);padding:.5em 1em;border-radius:10px;margin:-1.5em 0 0 -25%;text-align:center;width:50%;line-height:2em;}
+.welcome,.end{font-size: 2em;}
+</style>
+</head>
+<body>
+  <!-- pageOne -->
+  <input type="text" id="name" placeholder="输入你的姓名">
+  <input type="button" id="btn" value="确认">
+  <div id="tips" class="tips hide"></div>
+
+  <!-- pageTwo -->
+  <div id="welcome" class="welcome hide">欢迎你，<span id="name2"></span>!,接下来请摇动你的手机,惊喜在后面。</div>
+
+  <!-- pageThree -->
+  <div id="end" class="end hide"><span id="name3"></span>,你傻啊！叫你摇你还真摇！</div>
+
+<script src="../jquery-2.1.4.js"></script>
+<script>
+$(function () {
+  var name = $('#name');
+  var btn = $('#btn');
+
+  btn.click(function () {
+    var nameVal = $.trim(name.val());
+    if(!nameVal){
+      showTips('请输入你的姓名');
+      return;
+    }else{
+      if(nameVal.length > 4){
+        showTips('你特么在逗我?');
+        return;
+      }
+      hidePageOne();
+      showPageTwo(nameVal);
+    }
+  });
+
+  // 显示最后一页
+  function showPageEnd(){
+    $('#welcome').addClass('hide');
+    $('#end').removeClass('hide');
+  }
+
+  // 显示第二页
+  function showPageTwo(name){
+    $('#welcome').removeClass('hide');
+    $('#name2,#name3').text(name);
+  }
+
+  //隐藏第一页
+  function hidePageOne(){
+    name.add(btn).hide();
+  }
+
+  //提示消息
+  function showTips(val){
+    var tip = $('#tips');
+    tip.text(val).fadeIn();
+    setTimeout(function () {
+      tip.fadeOut('slow',function () {
+        $(this).text('');
+      });
+    },2000);
+  }
+
+  //摇一摇
+  function yyy(){
+    //摇动
+    if ((window.DeviceMotionEvent)) {
+      window.addEventListener('devicemotion', deviceMotionHandler, false);
+    } else {
+      alert('sorry,换个好点的手机再来吧！');
+    }
+
+    var SHAKE_THRESHOLD = 800;
+    var last_update = 0;
+    var x, y, z, last_x, last_y, last_z;
+    var num = 0;
+    function deviceMotionHandler(eventData) {
+      var acceleration =eventData.accelerationIncludingGravity;
+      var curTime = new Date().getTime();
+      if ((curTime - last_update) > 300) {
+          var diffTime = curTime - last_update;
+          last_update = curTime;
+          x = acceleration.x;
+          y = acceleration.y;
+          z = acceleration.z;
+          var speed = Math.abs(x +y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+          if (speed > SHAKE_THRESHOLD && num > 5) {
+
+            num++;
+          }
+
+          last_x = x;
+          last_y = y;
+          last_z = z;
+        }
+    }
+  }
+  
+});
+</script>
+</body>
+</html>
