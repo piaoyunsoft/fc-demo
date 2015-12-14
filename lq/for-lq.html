@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ForLq</title>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+  $(function () {
+    /**
+     * [getTime 获取时间]
+     * @return {[string]} [返回拼接后dom字符串]
+     */
+    var date1 = new Date('2014-06-30');  //开始时间
+    function getTime(date1){
+      var date2=new Date();    //结束时间
+      var date3=date2.getTime()-date1.getTime()  //时间差的毫秒数
+      var days=Math.floor(date3/(24*3600*1000))
+      var leave1=date3%(24*3600*1000)    //计算天数后剩余的毫秒数
+      var hours=Math.floor(leave1/(3600*1000))
+      var leave2=leave1%(3600*1000)        //计算小时数后剩余的毫秒数
+      var minutes=Math.floor(leave2/(60*1000))
+      var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+      var seconds=Math.round(leave3/1000)
+      return days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒";
+    }
+
+    setInterval(function () {
+      $('#time').html(getTime(date1));
+    },1000);
+
+  });
+  </script>
+</head>
+<body>
+  <div id="time"></div>
+</body>
+</html>
