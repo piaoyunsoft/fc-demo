@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+	body{padding: 100px;}
+	.box{position: absolute; left: 50%;top: 50%;}
+	.box span{display: block;position: absolute;width: 0;height: 0;left: 0;}
+	.box{
+		/*animation: rotating 5s infinite linear;*/
+	}
+	@keyframes rotating {
+	    0%{
+	        -webkit-transform: rotate3d(0,0,1,0deg);
+	    }
+	    20%{
+	        -webkit-transform: rotate3d(0,0,1,180deg);
+	    }
+	    100%{
+	        -webkit-transform: rotate3d(0,0,1,180deg);
+	    }
+	}
+</style>
+<script src="../jquery-2.1.4.js"></script>
+<script>
+$(function(){
+	var len = $('.box').length;
+	$('.box').each(function(i){
+		var me = $(this);
+		var bgcolor = '#FF9800';
+		var w = 20 * (i + 1);
+		var h = 12 * (i + 1);
+
+		if(i % 2 == 0){
+			bgcolor = '#00BCD4';
+		}
+
+		me.attr('id','no'+i);
+
+		$('#no'+i).css({
+			'width': w + 'px',
+			'height': h + 'px',
+			'background': bgcolor,
+			'margin-left': -Math.floor(w / 2) + 'px',
+			'margin-top': -Math.floor(h / 2) + 'px',
+			'z-index': len - i
+			,'animation': 'rotating '+ (.1 * (i + 10)) +'s infinite linear'
+		});
+
+		$('#no'+i).find('span:first').css({
+			'top': -Math.floor(w / 4) + 'px',
+			'border-left': Math.floor(w / 2) + 'px solid transparent',
+			'border-right': Math.floor(w / 2) + 'px solid transparent',
+			'border-bottom': Math.floor(w / 4) + 'px solid '+bgcolor
+		});
+
+		$('#no'+i).find('span:last').css({
+			'bottom': -Math.floor(w / 4) + 'px',
+			'border-left': Math.floor(w / 2) + 'px solid transparent',
+			'border-right': Math.floor(w / 2) + 'px solid transparent',
+			'border-top': Math.floor(w / 4) + 'px solid '+bgcolor 
+		});
+	});
+});
+</script>
+</head>
+<body>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+	<div class="box"><span></span><span></span></div>
+</body>
+</html>
