@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html,body{
+  background-color: lightseagreen;
+  color: #fff;
+}
+.love{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 20rem;
+}
+.time{
+  
+}
