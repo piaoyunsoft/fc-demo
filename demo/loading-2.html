@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 40px;
+      height: 40px;
+      margin: 100px auto;
+      transform: rotate(45deg);
+    }
+    .box span{
+      display: block;
+      width: 20px;
+      height: 20px;
+      float: left;
+      /*background-color: #00BCD4;*/
+    }
+    .box span:nth-child(1){
+      background-color: #00BCD4;
+      animation:topMove 1s infinite;
+    }
+    .box span:nth-child(2){
+      background-color: #00BCD4;
+      animation:rightMove 1s infinite;
+    }
+    .box span:nth-child(3){
+      background-color: #00BCD4;
+      animation:leftMove 1s infinite;
+    }
+    .box span:nth-child(4){
+      background-color: #00BCD4;
+      animation:botMove 1s infinite;
+    }
+    @keyframes topMove{
+      0%{
+        transform: translate3d(0, 0, 0);
+      }
+      40%{
+        transform: translate3d(-10px, -10px, 0) rotate(90deg);
+      }
+      60%{
+        transform: translate3d(-10px, -10px, 0) rotate(90deg);
+      }
+      100%{
+        transform: translate3d(0, 0, 0) rotate(90deg);
+      }
+    }
+    @keyframes leftMove{
+      0%{
+        transform: translate3d(0, 0, 0);
+      }
+      40%{
+        transform: translate3d(-10px, 10px, 0) rotate(90deg);
+      }
+      60%{
+        transform: translate3d(-10px, 10px, 0) rotate(90deg);
+      }
+      100%{
+        transform: translate3d(0, 0, 0) rotate(90deg);
+      }
+    }
+    @keyframes rightMove{
+      0%{
+        transform: translate3d(0, 0, 0);
+      }
+      40%{
+        transform: translate3d(10px, -10px, 0) rotate(90deg);
+      }
+      60%{
+        transform: translate3d(10px, -10px, 0) rotate(90deg);
+      }
+      100%{
+        transform: translate3d(0, 0, 0) rotate(90deg);
+      }
+    }
+    @keyframes botMove{
+      0%{
+        transform: translate3d(0, 0, 0);
+      }
+      40%{
+        transform: translate3d(10px, 10px, 0) rotate(90deg);
+      }
+      60%{
+        transform: translate3d(10px, 10px, 0) rotate(90deg);
+      }
+      100%{
+        transform: translate3d(0, 0, 0) rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</body>
+</html>
