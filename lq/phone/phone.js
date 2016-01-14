@@ -25,7 +25,7 @@ $(function(){
       return;
     }
 
-console.log(Math.floor((dx + ev.x)/iFont));
+// console.log(Math.floor((dx + ev.x)/iFont));
 
     if(Math.floor((dx + ev.x)/iFont) == 22){
       alert('o 了');

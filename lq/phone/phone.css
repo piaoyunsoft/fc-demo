@@ -61,13 +61,47 @@ img{display: block;}
 .drag{
   width: 30rem;
   padding: .5rem 0;
-  background-color: rgba(255,255,255,0.7);
+  /*background-color: rgba(255,255,255,0.4);*/
+  background: linear-gradient(rgba(167, 163, 159,.2), rgba(159,158,169,.5), rgba(132,135,152,.5));
   bottom: 13%;
   left: 50%;
   margin-left: -15rem;
   border-radius: 4rem;
+  overflow: hidden;
 }
 .target{
   width: 7rem;
   margin-left: .5rem;
+  z-index: 5;
+  position: relative;
+}
+/*.target-bg{
+  height: 8rem;
+  width: 30rem;
+  z-index: 5;
+  left: -23rem;
+  top: 0;
+  background: linear-gradient(rgba(167, 163, 159,.2), rgba(159,158,169,.5), rgba(132,135,152,.5));
+}*/
+.unlock{
+  width:100%;
+  left: 0%;
+  top: 50%;
+  text-align: center;
+  z-index: 4;
+  /*line-height:50px; */
+  margin-top: -1rem;
+  font-size:2rem; 
+  -webkit-background-clip: text;  /*按文字裁剪*/   
+  -webkit-text-fill-color: transparent; /*文字的颜色使用背景色*/  
+  background-color:#000; /*设置一个背景色*/   
+  background-image: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 30%, #fff 50%, rgba(0, 0, 0, 0.6) 70%);   /*设置渐变的背景，按对角线渐变*/
+  background-blend-mode: hard-light;  /*设置背景为混合模式下的强光模式*/
+  background-size: 200%;
+  -webkit-animation: shine 4s infinite; /*给背景添加动画改变位置*/
+}
+
+@-webkit-keyframes shine {
+  from {background-position: 100%;}
+  to {background-position: 0;}
 }
