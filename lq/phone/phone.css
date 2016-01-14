@@ -65,9 +65,9 @@ img{display: block;}
   bottom: 13%;
   left: 50%;
   margin-left: -15rem;
-  border-radius: 3rem;
+  border-radius: 4rem;
 }
 .target{
-  width:5rem;
+  width: 7rem;
   margin-left: .5rem;
 }
