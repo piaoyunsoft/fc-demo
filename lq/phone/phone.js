@@ -41,4 +41,33 @@ $(function(){
     dx += ev.x;
     dy += ev.y;
   });
+
+  var musicBox = $('#musicBox');
+
+  musicBox.attr('src','./images/qixi-3.mp3');
+
+  // var audioTimer = setInterval(function(){
+  //   clearInterval(audioTimer);
+  //   musicBox.play();
+  //   playAudio();
+  // }, 6000);
+
+  // 开始
+  // function playAudio(){
+  //   musicBox.play();
+  // }
+
+  // 暂停
+  // function pauseAudio(){
+  //   musicBox.pause();
+  // }
+
+  //播放暂停切换  
+  // function playAudio() {  
+  //   if(musicBox.paused) {  
+  //     playAudio();  
+  //   } else {  
+  //     pauseAudio();  
+  //   }  
+  // }  
 });
