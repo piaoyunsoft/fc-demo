@@ -45,9 +45,7 @@
   <script>
 window.onload = function(){
   // 设置rem
-  // var _w = $(window).width();
   var _w = document.body.clientWidth;
-  console.log(_w);
   var BASE_W = 750;
   var BASE_SIZE = 20;
   var iFont = _w / BASE_W * 20;
@@ -124,7 +122,7 @@ window.onload = function(){
     setTimeout(function(){
       musicBox.setAttribute('src','');
       clearInterval(setTimeTimer);
-    },6000);
+    },20000);
   }
 
   // 设置通话时间
@@ -146,8 +144,7 @@ window.onload = function(){
       }else if(i / 60 <= 360){
         // TODO:暂时不考虑小时的情况
       }
-      console.log(str);
-      // document.getElementById('time').innertext(str);
+      time.innerHTML = str;
     }, 1000);
   }
 
