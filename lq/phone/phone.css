@@ -75,14 +75,6 @@ img{display: block;}
   z-index: 5;
   position: relative;
 }
-/*.target-bg{
-  height: 8rem;
-  width: 30rem;
-  z-index: 5;
-  left: -23rem;
-  top: 0;
-  background: linear-gradient(rgba(167, 163, 159,.2), rgba(159,158,169,.5), rgba(132,135,152,.5));
-}*/
 .unlock{
   width:100%;
   left: 0%;
@@ -104,4 +96,9 @@ img{display: block;}
 @-webkit-keyframes shine {
   from {background-position: 100%;}
   to {background-position: 0;}
+}
+
+.box2{
+  background: url(./images/end.png) no-repeat center;
+  background-size: cover;
 }
