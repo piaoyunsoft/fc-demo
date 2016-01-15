@@ -102,3 +102,11 @@ img{display: block;}
   background: url(./images/end.png) no-repeat center;
   background-size: cover;
 }
+.endCalls{
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  bottom: 10%;
+  left: 50%;
+  margin-left: -4rem;
+}
