@@ -28,6 +28,7 @@ $(function(){
 // console.log(Math.floor((dx + ev.x)/iFont));
 
     if(Math.floor((dx + ev.x)/iFont) == 22){
+      closeAudio();
       alert('o 了');
       return;
     }else if(Math.floor((dx + ev.x)/iFont) > 22){
@@ -46,28 +47,14 @@ $(function(){
 
   musicBox.attr('src','./images/qixi-3.mp3');
 
-  // var audioTimer = setInterval(function(){
-  //   clearInterval(audioTimer);
-  //   musicBox.play();
-  //   playAudio();
-  // }, 6000);
+  var audioTimer = setInterval(function(){
+    musicBox.attr('src','./images/qixi-3.mp3');
+  },7000);
 
-  // 开始
-  // function playAudio(){
-  //   musicBox.play();
-  // }
-
-  // 暂停
-  // function pauseAudio(){
-  //   musicBox.pause();
-  // }
-
-  //播放暂停切换  
-  // function playAudio() {  
-  //   if(musicBox.paused) {  
-  //     playAudio();  
-  //   } else {  
-  //     pauseAudio();  
-  //   }  
-  // }  
+  // 关闭接听铃声
+  function closeAudio(){
+    musicBox.attr('src','');
+    clearInterval(audioTimer);
+  }
+ 
 });
