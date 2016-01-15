@@ -7,6 +7,12 @@ $(function(){
   $('html,body').css('font-size', iFont);
 
 // console.log(iFont);
+// 
+  $('img').load(function(){
+    console.log(1);
+  });
+
+
 
   touch.on('#target', 'touchstart', function(ev){
     ev.preventDefault();
@@ -29,8 +35,7 @@ $(function(){
 
     if(Math.floor((dx + ev.x)/iFont) == 22){
       closeAudio();
-      alert('o 了');
-      return;
+      return false;
     }else if(Math.floor((dx + ev.x)/iFont) > 22){
       return false;
     }
@@ -47,9 +52,9 @@ $(function(){
 
   musicBox.attr('src','./images/qixi-3.mp3');
 
-  var audioTimer = setInterval(function(){
-    musicBox.attr('src','./images/qixi-3.mp3');
-  },7000);
+  // var audioTimer = setInterval(function(){
+  //   musicBox.attr('src','./images/qixi-3.mp3');
+  // },1000);
 
   // 关闭接听铃声
   function closeAudio(){
