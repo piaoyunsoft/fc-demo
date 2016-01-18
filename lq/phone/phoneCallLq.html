@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <meta name="referrer" content="origin-when-cross-origin">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <title>for LQ</title>
+  <style>
+  *{margin:0;padding:0}html,body{height:100%;width:100%;background-color:#000}img{display:block}.rel{position:relative}.abs{position:absolute}.hide{display:none}.blur{-webkit-filter:blur(10px);-moz-filter:blur(10px);-ms-filter:blur(10px);filter:blur(10px)}.box{width:100%;height:100%}.name{color:#fff;font-size:3rem;z-index:3;top:4.6%;width:100%;text-align:center}.name + p{color:#fff;font-size:1.5rem;top:12%;width:100%;text-align:center;z-index:3}.phone{z-index:3;left:0;top:0;width:100%;height:100%}.mes{display:block;bottom:30%;width:60%;left:50;margin-left:20%}.drag{width:30rem;padding:.5rem 0;background:linear-gradient(rgba(167,163,159,.2),rgba(159,158,169,.5),rgba(132,135,152,.5));bottom:13%;left:50%;margin-left:-15rem;border-radius:4rem;overflow:hidden}.target{width:7rem;margin-left:.5rem;z-index:5;position:relative}.unlock{width:100%;left:0%;top:50%;text-align:center;z-index:4;margin-top:-1rem;font-size:2rem;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-color:#000;background-image:-webkit-linear-gradient(-45deg,rgba(0,0,0,0.6) 30%,#fff 50%,rgba(0,0,0,0.6) 70%);background-blend-mode:hard-light;background-size:200%;-webkit-animation:shine 4s infinite}@-webkit-keyframes shine{from{background-position:100%}to{background-position:0}}.box2{background:url(http://7xq4sj.com1.z0.glb.clouddn.com/end.png) no-repeat center;background-size:cover}.endCalls{position:absolute;width:8rem;height:8rem;bottom:10%;left:50%;margin-left:-4rem}
+  </style>
+</head>
+<body>
+  <audio class="hide" id="musicBox" preload="metadata" controls src="" autoplay="false">  
+  </audio>  
+  <div class="box box1 rel" id="box1">
+    <p class="name abs">FC</p>
+    <p class="abs">手机</p>
+    <img src="http://7xq4sj.com1.z0.glb.clouddn.com/4.jpg" alt="" class="blur" width="100%" height="100%">
+    <div class="phone abs">
+      <img src="http://7xq4sj.com1.z0.glb.clouddn.com/bg1.png" alt="" width="100%" class="mes abs">
+      <div class="drag abs">
+        <img id="target" class="target" src="http://7xq4sj.com1.z0.glb.clouddn.com/answer.png" alt="">
+        <!-- <div class="target-bg abs"></div> -->
+        <p class="unlock abs">滑动来接听</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="box rel box2 hide" id="box2">
+    <p class="name abs">FC</p>
+    <p class="abs" id="time">00:00</p>
+    <div class="endCalls" id="endCalls"></div>
+    <!-- <img src="./images/end.png" alt="" width="100%"> -->
+  </div>
+
+
+  
+  <script src="http://7xpaop.com1.z0.glb.clouddn.com/touch-0.2.14.min.js"></script>
+  <script>
+window.onload = function(){
+  // 设置rem
+  var _w = document.body.clientWidth;
+  var BASE_W = 750;
+  var BASE_SIZE = 20;
+  var iFont = _w / BASE_W * 20;
+  document.getElementsByTagName("html")[0].style.fontSize = iFont + 'px';
+  document.getElementsByTagName("body")[0].style.fontSize = iFont + 'px';
+
+
+  // 拖动
+  touch.on('#target', 'touchstart', function(ev){
+    ev.preventDefault();
+  });
+
+  var target = document.getElementById("target");
+  var dx, dy;
+  touch.on('#target', 'drag', function(ev){
+    dx = dx || 0;
+    dy = dy || 0;
+    var offx = dx + ev.x + "px";
+    var offy = "0px";
+
+    if(ev.x < 0){
+      return;
+    }
+
+    if(Math.floor((dx + ev.x)/iFont) == 22){
+      this.style.webkitTransform = "translate3d(" + (26 * iFont) + "px,0,0)";
+      closeAudio()
+      return false;
+    }else if(Math.floor((dx + ev.x)/iFont) > 22){
+      return false;
+    }
+
+    this.style.webkitTransform = "translate3d(" + offx + ",0,0)";
+  });
+
+  touch.on('#target', 'dragend', function(ev){
+    dx += ev.x;
+    dy += ev.y;
+  });
+
+  var musicBox = document.getElementById('musicBox');
+  var musicTimes = 0;
+  var vadioUrl = 'http://7xq4sj.com1.z0.glb.clouddn.com/qixi-3.mp3';
+
+  musicBox.setAttribute('src',vadioUrl);
+
+  var audioTimer = setInterval(function(){
+    musicTimes++;
+    if(musicTimes <= 5){
+      musicBox.setAttribute('src',vadioUrl);
+    }else{
+      clearInterval(audioTimer);
+      closeAudio();
+      alert('赶紧接听啊');
+    }
+  },10000);
+
+  document.getElementById('endCalls').onclick = function(){
+    window.location.href = 'http://7xq4sj.com1.z0.glb.clouddn.com/for-lq2.html';
+  };
+
+  // 关闭接听铃声
+  function closeAudio(){
+    musicBox.setAttribute('src','');
+    clearInterval(audioTimer);
+    setTime();
+    pageTwo();
+  }
+  
+  // 去第二页
+  function pageTwo(){
+    document.getElementById('box1').className = 'box box1 rel hide';
+    document.getElementById('box2').className = 'box box2 rel';
+    musicBox.setAttribute('src','http://7xq4sj.com1.z0.glb.clouddn.com/forLq.m4a');
+    setTimeout(function(){
+      musicBox.setAttribute('src','');
+      clearInterval(setTimeTimer);
+    },20000);
+  }
+
+  // 设置通话时间
+  var setTimeTimer = null;
+  function setTime(){
+    var time = document.getElementById('time');
+    var i = 0;
+    var str = '';
+    setTimeTimer = setInterval(function(){
+      i++;
+      if(i / 60 < 1){
+        str = '00:' + toDouble(i);
+      }else if(i / 60 <= 60){
+        if(Math.floor(i / 60) < 10){
+          str = '0' + Math.floor(i / 60) + ':' + toDouble(i % 60);
+        }else{
+          str = Math.floor(i / 60) + ':' + toDouble(i % 60);
+        }
+      }else if(i / 60 <= 360){
+        // TODO:暂时不考虑小时的情况
+      }
+      time.innerHTML = str;
+    }, 1000);
+  }
+
+  // 将个位数转换为两位
+  function toDouble(num){
+    if(num < 10){
+      num = '0' + num;
+    }
+    return num;
+  }
+
+}
+  </script>
+</body>
+</html>
