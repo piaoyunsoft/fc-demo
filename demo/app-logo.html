@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .box{
+    width: 1000px;
+    height: 1000px;
+    background: -webkit-linear-gradient(top,#ccc,#fff);
+    position: relative;
+  }
+  .box span{
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+  }
+  .no1{width: 50px;height: 50px;margin: -25px 0 0 -25px;}
+  .no2{width: 100px;height: 100px;margin: -50px 0 0 -50px;}
+  .no3{width: 150px;height: 150px;margin: -75px 0 0 -75px;}
+  .no4{width: 200px;height: 200px;margin: -100px 0 0 -100px;}
+  .no5{width: 250px;height: 250px;margin: -125px 0 0 -125px;}
+  .box span:nth-child(1){
+    z-index: 9;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(-350px,-175px,0px);
+  }
+  .box span:nth-child(2){
+    z-index: 8;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(-300px,-150px,0px);
+  }
+  .box span:nth-child(3){
+    z-index: 7;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(-220px,-110px,0px);
+  }
+  .box span:nth-child(4){
+    z-index: 6;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(-120px,-60px,0px)
+  }
+  .box span:nth-child(5){
+    z-index: 5;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(0px,0px,0px);
+  }
+  .box span:nth-child(6){
+    z-index: 4;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(120px,60px,0px)
+  }
+  .box span:nth-child(7){
+    z-index: 3;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(220px,110px,0px);
+  }
+  .box span:nth-child(8){
+    z-index: 2;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(300px,150px,0px);
+  }
+  .box span:nth-child(9){
+    z-index: 1;
+    background-color: rgba(0,0,0,.5);
+    transform: rotate(26deg) skew(-60deg,-10deg) translate3d(350px,175px,0px);
+  }
+  </style>
+</head>
+<body>
+  <h1>颜色好难搞，不弄了。</h1>
+  <div class="box">
+    <span class="no1"></span>
+    <span class="no2"></span>
+    <span class="no3"></span>
+    <span class="no4"></span>
+    <span class="no5"></span>
+    <span class="no4"></span>
+    <span class="no3"></span>
+    <span class="no2"></span>
+    <span class="no1"></span>
+  </div>
+</body>
+</html>
