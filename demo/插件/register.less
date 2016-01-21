@@ -1,0 +1,133 @@
+/* register less for register.js */
+
+@import "./mixin.less";
+
+.full-page{
+  width: 100%!important;
+  height: 100%!important;
+  overflow: hidden;
+}
+
+// 注册弹出层
+#J_RegisterPop{
+  .mask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .register{
+    width: 92%;
+    position: absolute;
+    left: 50%;
+    z-index: 11;
+    margin-left: -46%;
+    .border-radius(10);
+    .p2r(top, 120);
+    .p2r(padding-top, 60);
+    .p2r(padding-bottom, 140);
+    overflow: hidden;
+    background-color: #fff;
+    text-align: center;
+
+    .tt{
+      .font-size(34);
+      color: #333;
+      .p2r(margin-bottom,30);
+
+      + p {
+        .font-size(28);
+        color: #999;
+        .p2r(margin-bottom,76);
+      }
+    }
+
+    .inp{
+      .width(560);
+      .height(86);
+      .border-radius(43);
+      .p2r(line-height,86);
+      .p2r(margin-bottom,30);
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid #c2c2c2;
+      background-color: #fff;
+
+      input{
+        border: none;
+        .width(480);
+        .height(84);
+        .p2r(line-height,84);
+      }
+
+      .get-auth-code{
+        position: absolute;
+        .height(54);
+        .width(148);
+        .p2r(line-height,54);
+        .font-size(24);
+        .border-radius(27);
+        .p2r(top, 14);
+        .p2r(right, 15);
+        text-align: center;
+        border: 2px solid #2bb200;
+        color: #2bb300;
+        background-color: #fff;
+        
+        &:active{
+          color: #fff;
+          background-color: #2bb300;
+        }
+      }
+    }
+
+    .btn-submit{
+      .width(560);
+      .height(86);
+      .p2r(line-height,86);
+      .p2r(margin-bottom,30);
+      .p2r(margin-top,170);
+      .font-size(36);
+      .border-radius(43);
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      color: #fff;
+      background-color: #2bb200;
+
+      &:active{
+        background-color: #299E04;
+      }
+    }
+
+    .protocol{
+      .font-size(24);
+      color: #999;
+
+      .icon-selected{
+        color: #2bb300;
+      }
+
+      .iconfont{
+        .font-size(26);
+        .p2r(margin-right, 10);
+        color: #a4a4a4;
+        vertical-align: middle;
+      }
+
+      .icon-selected{
+        color: #2bb300;
+      }
+
+      a{
+        color: #2bb300;
+      }
+    }
+  }
+}

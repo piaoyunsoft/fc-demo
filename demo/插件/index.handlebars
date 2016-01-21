@@ -1,0 +1,73 @@
+<div class="container J_Container">
+  <div class="top">
+    <img src="{{#if img}}{{{img}}}{{else}}http://statics.mangguoyisheng.com/resource/demo/1.0.0/hybrid/famous-doctors/default-head.png{{/if}}" alt="医生头像">
+    <p class="name">{{name}}</p>
+    <p><em>{{jobTitle}}</em> | {{deptName}}</p>
+    <p>{{hName}}</p>
+  </div>
+  <div class="main">
+    <div class="good-at J_CollectData" data-event-id="0101040101310">
+      <p class="title">
+        <span class="iconfont icon-damuzhi"></span>
+        <span>擅长</span>
+      </p>
+      <div class="content" id="J_Expert">
+        <p class="left">{{#if simpleDesc}}{{{simpleDesc}}}{{else}}{{{expert}}}{{/if}}</p>
+        <p class="right">
+          <span class="txt"></span>
+          <i class="iconfont icon-right"></i>
+        </p>
+      </div>
+    </div>
+    <span class="prompt"><i class="iconfont icon-prompt"></i>预约服务费不包括到院挂号费及诊疗费</span>
+
+    {{#if isHasProduct}}
+    {{#each products}}
+    <div class="hospital-wrap">
+      <span class="hospital-title">{{@key}}</span>
+      {{#if this}}
+      {{#each this}}
+      <div class="hospital-body clearfix J_Booking J_CollectData" data-id="{{id}}" data-hospital-id="{{hid}}" data-event-id="0101040102310">
+        <div class="hospital-body-left">
+          <span>{{clinicDate}}</span>
+          <span>{{clinicTime}}</span>
+          <span class="font-green J_color">{{#compare price '===' "0"}}免费{{else}}￥{{{price}}}{{/compare}}</span>
+        </div>
+        <div class="hospital-body-right">
+          <i>马上预约</i>
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+          <p>排班已满!</p>
+      {{/if}}
+    </div>
+    {{/each}}
+    {{else}}
+    <p class="empty-products">暂无排班时间</p>
+    {{/if}}
+  </div>
+</div>
+
+<div id="J_RegisterPop" class="hide">
+  <div class="mask J_Mask" id="mask"></div>
+  <div class="register">
+    <div class="tt">您还未注册，验证后才能购买哦！</div>
+    <p>购买服务请填写真实有效的姓名、手机号。</p>
+    <div class="inp">
+      <input class="J_FormField" type="text" name="name" placeholder="请输入您的姓名" data-validate-msg="请输入您的姓名">
+    </div>
+    <div class="inp">
+      <input class="J_FormField" id="J_Phone" name="phoneNum" type="text" placeholder="请输入手机号码" data-validate-msg="请输入手机号码">
+      <div class="fr get-auth-code" id="J_GetAuthCode">获取验证码</div>
+    </div>
+    <div class="inp">
+      <input class="J_FormField" type="text" name="verifyCode" placeholder="请填写验证码" data-validate-msg="请填写验证码">
+    </div>
+    <div class="btn-submit" id="J_Confirm" data-type="0">提交</div>
+    <p class="protocol">
+      <i class="iconfont icon-selected J_FormField" name="protocol" id="J_Read" data-validate-msg="请阅读并勾选服务协议"></i>
+      我已阅读并接收<a href="#" targer="_blank">用户服务许可协议</a>
+    </p>
+  </div>
+</div>
