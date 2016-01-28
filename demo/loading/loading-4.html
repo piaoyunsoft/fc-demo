@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>loading</title>
+  <style>
+  body{background-color: #000;}
+  .box{
+    width: 100px;
+    height: 100px;
+    margin: 100px auto;
+    position: relative;
+  }
+  .box span{
+    display: block;
+    border-radius: 50%;
+  }
+  .box span:nth-child(1){
+    border: 5px solid #fff;
+    width: 90px;
+    height: 90px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation:outside .5s infinite;
+  }
+  .box span:nth-child(2){
+    width: 50px;
+    height: 50px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -25px 0 0 -25px;
+    background-color: rgba(255,255,255,1);
+    animation:inside 1s infinite;
+  }
+  @keyframes outside{
+    0%{transform:rotate(0);}
+    100%{transform:rotate(180deg);}
+  }
+  @keyframes inside{
+    0%{transform: scale(1);}
+    30%{transform: scale(.3);}
+    100%{transform: scale(1);}
+  }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span></span>
+    <span></span>
+  </div>
+</body>
+</html>
