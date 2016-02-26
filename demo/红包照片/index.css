@@ -1,0 +1,9 @@
+
+.blur-img{
+  display: block;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+
+  -webkit-filter: blur(20px);
+}
