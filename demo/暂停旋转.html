@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body{padding: 100px;}
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: #FF002D;
+      opacity: .5;
+      -webkit-animation: box_move 2s linear infinite;
+      -o-animation: box_move 2s linear infinite;
+      animation: box_move 2s linear infinite;
+    }
+    @keyframes box_move{
+      0%{
+        transform: rotate(0deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+  window.onload = function(){
+    var move = true;
+    document.getElementById('box').onclick = function(){
+      if(move){
+        // animationPlayState 有兼容问题。需谨慎使用
+        this.style.animationPlayState = 'paused';
+        this.style.weblitAnimationPlayState = 'paused';
+        move = false;
+      }else{
+        this.style.animationPlayState = 'running';
+        this.style.weblitAnimationPlayState = 'running';
+        move = true;
+      }
+    };
+  }
+  </script>
+</head>
+<body>
+  <div class="box" id="box"></div>
+</body>
+</html>
