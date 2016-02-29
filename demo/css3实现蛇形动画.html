@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body {
+    background: #ebb447;
+    color: #477eeb;
+    height: 100vh;
+    margin: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.view {
+    height: 100px;
+    width: 800px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 800px;
+    -ms-flex: 0 0 800px;
+    flex: 0 0 800px;
+    position: relative;
+}
+.view * {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.view > .axis {
+    -webkit-transform: rotate(60deg) rotateX(35deg) rotateY(-45deg);
+    transform: rotate(60deg) rotateX(35deg) rotateY(-45deg);
+}
+.axis {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.scale {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px;
+    height: 100px;
+    width: 100px;
+}
+.cube {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    visibility: hidden;
+}
+.cube > .scale {
+    -webkit-animation: move 6s linear infinite, switch 6s steps(2) infinite;
+    animation: move 6s linear infinite, switch 6s steps(2) infinite;
+}
+.cube:nth-child(1) > .scale {
+    -webkit-animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s;
+}
+.cube:nth-child(2) > .scale {
+    -webkit-animation-delay: -0.75s, -0.75s;
+    animation-delay: -0.75s, -0.75s;
+}
+.cube:nth-child(3) > .scale {
+    -webkit-animation-delay: -1.5s, -1.5s;
+    animation-delay: -1.5s, -1.5s;
+}
+.cube:nth-child(4) > .scale {
+    -webkit-animation-delay: -2.25s, -2.25s;
+    animation-delay: -2.25s, -2.25s;
+}
+.cube:nth-child(5) > .scale {
+    -webkit-animation-delay: -3s, -3s;
+    animation-delay: -3s, -3s;
+}
+.cube:nth-child(6) > .scale {
+    -webkit-animation-delay: -3.75s, -3.75s;
+    animation-delay: -3.75s, -3.75s;
+}
+.cube:nth-child(7) > .scale {
+    -webkit-animation-delay: -4.5s, -4.5s;
+    animation-delay: -4.5s, -4.5s;
+}
+.cube:nth-child(8) > .scale {
+    -webkit-animation-delay: -5.25s, -5.25s;
+    animation-delay: -5.25s, -5.25s;
+}
+.cube:nth-child(9) > .scale {
+    -webkit-animation-delay: -6s, -6s;
+    animation-delay: -6s, -6s;
+}
+.cube:nth-child(10) > .scale {
+    -webkit-animation-delay: -6.75s, -6.75s;
+    animation-delay: -6.75s, -6.75s;
+}
+.cube:nth-child(11) > .scale {
+    -webkit-animation-delay: -7.5s, -7.5s;
+    animation-delay: -7.5s, -7.5s;
+}
+.cube:nth-child(12) > .scale {
+    -webkit-animation-delay: -8.25s, -8.25s;
+    animation-delay: -8.25s, -8.25s;
+}
+.cube:nth-child(13) > .scale {
+    -webkit-animation-delay: -9s, -9s;
+    animation-delay: -9s, -9s;
+}
+.cube:nth-child(14) > .scale {
+    -webkit-animation-delay: -9.75s, -9.75s;
+    animation-delay: -9.75s, -9.75s;
+}
+.cube:nth-child(15) > .scale {
+    -webkit-animation-delay: -10.5s, -10.5s;
+    animation-delay: -10.5s, -10.5s;
+}
+.cube:nth-child(16) > .scale {
+    -webkit-animation-delay: -11.25s, -11.25s;
+    animation-delay: -11.25s, -11.25s;
+}
+.side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    background-color: currentColor;
+    visibility: visible;
+}
+.side:nth-child(1) {
+    -webkit-transform: rotateY(0) rotateX(0deg) translateZ(50px);
+    transform: rotateY(0) rotateX(0deg) translateZ(50px);
+    background-image: -webkit-linear-gradient(transparent, transparent);
+    background-image: linear-gradient(transparent, transparent);
+}
+.side:nth-child(2) {
+    -webkit-transform: rotateY(0) rotateX(-90deg) translateZ(50px);
+    transform: rotateY(0) rotateX(-90deg) translateZ(50px);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+.side:nth-child(3) {
+    -webkit-transform: rotateY(-90deg) rotateX(-180deg) translateZ(50px);
+    transform: rotateY(-90deg) rotateX(-180deg) translateZ(50px);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+@-webkit-keyframes move {
+    0%, 25% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    12.5% {
+        -webkit-transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+    }
+    25%,
+    50% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    37.5% {
+        -webkit-transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+    }
+    50%,
+    75% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    62.5% {
+        -webkit-transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+    }
+    75%,
+    100% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    87.5% {
+        -webkit-transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+    }
+}
+@keyframes move {
+    0%, 25% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    12.5% {
+        -webkit-transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+    }
+    25%,
+    50% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    37.5% {
+        -webkit-transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+    }
+    50%,
+    75% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    62.5% {
+        -webkit-transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(1) scaleY(0.16667) scaleZ(0.16667);
+    }
+    75%,
+    100% {
+        -webkit-transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(0.16667) scaleZ(0.16667);
+    }
+    87.5% {
+        -webkit-transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+        transform: scaleX(0.16667) scaleY(1) scaleZ(0.16667);
+    }
+}
+@-webkit-keyframes switch {
+    0.001% {
+        -webkit-transform-origin: 0px 0px 0;
+        transform-origin: 0px 0px 0;
+    }
+    25% {
+        -webkit-transform-origin: 200px 0px 0;
+        transform-origin: 200px 0px 0;
+    }
+    25.001% {
+        -webkit-transform-origin: 100px 0px 0;
+        transform-origin: 100px 0px 0;
+    }
+    50% {
+        -webkit-transform-origin: 100px 200px 0;
+        transform-origin: 100px 200px 0;
+    }
+    50.001% {
+        -webkit-transform-origin: 100px 100px 0;
+        transform-origin: 100px 100px 0;
+    }
+    75% {
+        -webkit-transform-origin: -100px 100px 0;
+        transform-origin: -100px 100px 0;
+    }
+    75.001% {
+        -webkit-transform-origin: 0px 100px 0;
+        transform-origin: 0px 100px 0;
+    }
+    100%,
+    0% {
+        -webkit-transform-origin: 0px -100px 0;
+        transform-origin: 0px -100px 0;
+    }
+}
+@keyframes switch {
+    0.001% {
+        -webkit-transform-origin: 0px 0px 0;
+        transform-origin: 0px 0px 0;
+    }
+    25% {
+        -webkit-transform-origin: 200px 0px 0;
+        transform-origin: 200px 0px 0;
+    }
+    25.001% {
+        -webkit-transform-origin: 100px 0px 0;
+        transform-origin: 100px 0px 0;
+    }
+    50% {
+        -webkit-transform-origin: 100px 200px 0;
+        transform-origin: 100px 200px 0;
+    }
+    50.001% {
+        -webkit-transform-origin: 100px 100px 0;
+        transform-origin: 100px 100px 0;
+    }
+    75% {
+        -webkit-transform-origin: -100px 100px 0;
+        transform-origin: -100px 100px 0;
+    }
+    75.001% {
+        -webkit-transform-origin: 0px 100px 0;
+        transform-origin: 0px 100px 0;
+    }
+    100%,
+    0% {
+        -webkit-transform-origin: 0px -100px 0;
+        transform-origin: 0px -100px 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="view">
+    <div class="axis">
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cube">
+            <div class="scale">
+                <div class="axis">
+                    <div class="side"></div>
+                    <div class="side"></div>
+                    <div class="side"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
