@@ -4,8 +4,7 @@
 - <a href="#no2">4.2 JavaScript</a>
 - <a href="#no3">4.3 应用这个JavaScript函数</a>
 - <a href="#no4">4.4 对这个函数进行扩展</a>
-- <a href="#no5">4.5 </a>
-- <a href="#no6">4.6 </a>
+- <a href="#no5">4.5 小结</a>
 
 **本章内容**
 
@@ -161,3 +160,36 @@
 > 如果想改变一个文本节点的值，就用DOM提供的`nodeValue`属性，它用来得到（和设置）一个节点的值：
 
 	node.nodeValue
+
+###4.4.6 firstChild 和 lastChild 属性
+
+> 数组元素`childNodes[0]`有个更直观易读的同义词。无论何时何地，只需要访问childNoes数组的第一个元素，都可以把它写成`firstChild`。
+
+	node.firstChild == node.childNodes[0]
+
+与之对应的 `lastChild`属性：
+	
+	node.lastChild == node.childNodes[node.childNodes.length - 1]
+
+###4.4.7 利用 nodeValue 属性刷新这段描述
+
+**最终的代码清单**
+	
+	function showPic(whichpic){
+	  var source = whichpic.getAttribute('href');
+	  var placeholder = document.getElementById('placeholder');
+	  placeholder.setAttribute('src', source);
+	  var text = whichpic.getAttribute('alt');
+	  var description = document.getElementById('description');
+	  description.firstChild.nodeValue = text;  
+	}
+
+##<a name="no5">4.5 小结</a>
+
+> 本章介绍了一个简单的`JavaScript`应用案例，还介绍了DOM提供的几个信属性，它们是：
+
+- childNodes
+- nodeType
+- nodeValue
+- firstChild
+- lastChild
