@@ -5,37 +5,52 @@
   <title>Document</title>
   <style>
   *{margin:0;padding:0;}
-.warp{width:600px;height:300px;position:relative;}
-.box{width:600px;height:300px;position:absolute;z-index:1;left:0;top:0;}
-.box > div{width:100px;height:100px;float:left;position:relative;background:url(http://7xr9pe.com1.z0.glb.clouddn.com/2.jpg) no-repeat;  /*transition:transform .5s ease-in;*/}
-#btn{width:100px;height:40px;line-height:40px;text-align:center;background:#c3a;cursor:pointer;color:#fff;border-radius:5px;font-weight:bold;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-.hover1{animation:move1 .5s linear forwards;}
-@keyframes move1{
-  0%{transform:rotate3d(1,1,1,180deg) scale(1);}
-  100%{transform:scale(2);opacity:0;}
-}
+  body{padding:100px;}
+  .warp{width:600px;height:300px;position:relative;}
+  .box{width:600px;height:300px;position:absolute;z-index:1;left:0;top:0;}
+  .box > div{width:100px;height:100px;float:left;position:relative;background:url(http://7xr9pe.com1.z0.glb.clouddn.com/2.jpg) no-repeat;}
+  #btn{width:100px;height:40px;line-height:40px;text-align:center;background:#c3a;cursor:pointer;color:#fff;border-radius:5px;font-weight:bold;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
   </style>
   <script src="http://7xpaop.com1.z0.glb.clouddn.com/jquery-2.1.4.js"></script>
   <script>
     $(function(){
+    var box = $('#box');
     var piece = $('#box div');
     var btn = $('#btn');
+    var boxX = box.offset().left;
+    var boxY = box.offset().top;
 
     piece.each(function(i) {
       var me = $(this);
       me.css({
-        'background-position': '-'+ me.offset().left + 'px -' + me.offset().top + 'px'
+        'background-position': '-'+ (me.offset().left - boxX) + 'px -' + (me.offset().top - boxY) + 'px'
       });
     });
 
     btn.click(function(){
-      piece.eq(9).addClass('hover1');
+      piece.each(function(i){
+        var me = piece.eq(i);
 
-      setTimeout(function(){
-        piece.eq(9).removeClass('hover1');
-      },500);
+        me.css({
+          'opacity' : 0,
+          'transition': 'all .5s ease-out'
+        });
+
+        setStyle3(
+          me,
+          'transform',
+          'rotateX(' + rnd(-180, 180) + 'deg) rotateY(' + rnd(-180, 180) + 'deg) rotateZ('+ rnd(-180, 180) +'deg) scale('+ rnd(1.5, 3) +')');
+      });
+
     });
 
+    function rnd(min, max){
+      return Math.floor(Math.random()*(max - min)) + min;
+    }
+
+    function setStyle3(obj, name, value){
+      obj.css(name, value);
+    }
 
   });
   </script>
