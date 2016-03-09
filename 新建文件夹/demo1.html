@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  *{margin:0;padding:0;}
+.warp{width:600px;height:300px;position:relative;}
+.box{width:600px;height:300px;position:absolute;z-index:1;left:0;top:0;}
+.box > div{width:100px;height:100px;float:left;position:relative;background:url(http://7xr9pe.com1.z0.glb.clouddn.com/2.jpg) no-repeat;  /*transition:transform .5s ease-in;*/}
+#btn{width:100px;height:40px;line-height:40px;text-align:center;background:#c3a;cursor:pointer;color:#fff;border-radius:5px;font-weight:bold;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+.hover1{animation:move1 .5s linear forwards;}
+@keyframes move1{
+  0%{transform:rotate3d(1,1,1,180deg) scale(1);}
+  100%{transform:scale(2);opacity:0;}
+}
+  </style>
+  <script src="http://7xpaop.com1.z0.glb.clouddn.com/jquery-2.1.4.js"></script>
+  <script>
+    $(function(){
+    var piece = $('#box div');
+    var btn = $('#btn');
+
+    piece.each(function(i) {
+      var me = $(this);
+      me.css({
+        'background-position': '-'+ me.offset().left + 'px -' + me.offset().top + 'px'
+      });
+    });
+
+    btn.click(function(){
+      piece.eq(9).addClass('hover1');
+
+      setTimeout(function(){
+        piece.eq(9).removeClass('hover1');
+      },500);
+    });
+
+
+  });
+  </script>
+</head>
+<body>
+  <div class="warp">
+    <!-- <img src="./2.jpg" alt=""> -->
+    <div class="box" id="box">
+      <div data-index="1"></div>
+      <div data-index="2"></div>
+      <div data-index="3"></div>
+      <div data-index="4"></div>
+      <div data-index="5"></div>
+      <div data-index="6"></div>
+      <div data-index="7"></div>
+      <div data-index="8"></div>
+      <div data-index="9"></div>
+      <div data-index="10"></div>
+      <div data-index="11"></div>
+      <div data-index="12"></div>
+      <div data-index="13"></div>
+      <div data-index="14"></div>
+      <div data-index="15"></div>
+      <div data-index="16"></div>
+      <div data-index="17"></div>
+      <div data-index="18"></div>
+    </div>
+  </div>
+
+  <div id="btn">点我</div>
+</body>
+</html>
