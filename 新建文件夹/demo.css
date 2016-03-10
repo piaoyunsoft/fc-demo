@@ -4,6 +4,7 @@
 }
 body{
   padding: 100px;
+  background-color: #eee;
 }
 .warp {
   width: 600px;
@@ -23,7 +24,6 @@ body{
   height: 100px;
   float: left;
   position: relative;
-  background: url(./2.jpg) no-repeat;
 }
 #btn {
   width: 100px;
