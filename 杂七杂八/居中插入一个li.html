@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>居中插入一个li</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	body{padding: 100px;}
+	input{width: 100px;height: 30px;line-height: 30px;text-indent: 5px;outline: none;border: 1px solid #000;float: left;}
+	span{display:inline-block;padding:0 20px;height:32px;line-height:32px;text-align:center;cursor:pointer;margin-left:10px;border-radius:10px;background-color:#5EDCA8;color:#fff;font-weight:bold;}
+	ul{list-style: none;overflow: hidden;}
+	li{float: left;width: 40px;height: 40px;border-radius: 50%;background-color: #ccc;margin: 5px;}
+	.leader{background-color: pink;}
+	</style>
+</head>
+<body>
+	<input type="text" id="num">
+	<span id="change">点我改变</span>
+	<ul id="box">
+		<li class="leader"></li>
+	</ul>
+
+	<script>
+		var inp = document.getElementById('num');
+		var obtn = document.getElementById('change');
+		var box = document.getElementById('box');
+
+		obtn.onclick = function(){
+			var num = inp.value;
+			var tpl = '<li></li>';
+			var tpl2 = '<li class="leader"></li>';
+			var str = '';
+
+			for(var i = 0; i < num; i++){
+				if(i == parseInt((num - 1) / 2)){
+					str += tpl2;
+				}else{
+					str += tpl; 
+				}
+			}
+			box.innerHTML = str;
+		};
+	</script>
+</body>
+</html>
