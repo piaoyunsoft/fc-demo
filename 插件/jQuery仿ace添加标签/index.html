@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>演示：jQuery仿ace添加标签</title>
+        <meta name="keywords" content="添加标签,自定义标签" />
+        <meta name="description" content="之前复制了ace的标签，发现加载的js文件比较多，所以自己就仿了它的自定义标签，和大家分享下。" />
+        <link rel="stylesheet" type="text/css" href="http://www.sucaihuo.com/jquery/css/common.css" />
+        <style>
+            .tags {
+                background-color: #fff;
+                border: 1px solid #d5d5d5;
+                color: #777;
+                display: inline-block;
+                padding: 4px 6px;
+                vertical-align: middle;
+                width: 206px;
+            }
+            .tags:hover {
+                border-color: #f59942;
+                outline: 0 none;
+            }
+            .tags[class*="span"] {
+                float: none;
+                margin-left: 0;
+            }
+            .tags input[type="text"], .tags input[type="text"]:focus {
+                border: 0 none;
+                box-shadow: none;
+                display: inline;
+                line-height: 14px;
+                margin: 0;
+                outline: 0 none;
+                padding: 0;
+                width: 100%;
+            }
+            .tags .tag {
+                background-color: #91b8d0;
+                color: #fff;
+                display: inline-block;
+                font-size: 12px;
+                font-weight: normal;
+                margin-bottom: 3px;
+                margin-right: 3px;
+                padding: 4px 22px 5px 9px;
+                position: relative;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+                transition: all 0.2s ease 0s;
+                vertical-align: baseline;
+                white-space: nowrap;
+            }
+            .tags .tag .close {
+                bottom: 0;
+                color: #fff;
+                float: none;
+                font-size: 12px;
+                line-height: 20px;
+                opacity: 1;
+                position: absolute;
+                right: 0;
+                text-align: center;
+                text-shadow: none;
+                top: 0;
+                width: 18px;
+            }
+            .tags .tag .close:hover {
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+            .close {
+                color: #000;
+                float: right;
+                font-size: 21px;
+                font-weight: bold;
+                line-height: 1;
+                opacity: 0.2;
+                text-shadow: 0 1px 0 #fff;
+            }
+            .close:hover, .close:focus {
+                color: #000;
+                cursor: pointer;
+                opacity: 0.5;
+                text-decoration: none;
+            }
+            button.close {
+                background: transparent none repeat scroll 0 0;
+                border: 0 none;
+                cursor: pointer;
+                padding: 0;
+            }
+            .tags .tag-warning {
+                background-color: #ffb752;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="demo">
+                <h2 class="title"><a href="http://www.sucaihuo.com/js/214.html">教程：jQuery仿ace添加标签</a></h2>
+                <div class="tags" id="tags" tabindex="1">
+                    <span class="tag">
+                        Tag Input Control
+                        <button class="close" type="button">×</button>
+                    </span>
+                    <input id="form-field-tags" type="text" placeholder="Enter tags ..." value="Tag Input Control" name="tags" style="display: none;"/>
+                    <input type="text" placeholder="Enter tags ..." class="tags_enter" autocomplete="off"/>
+                </div>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="http://www.sucaihuo.com/Public/js/other/jquery.js"></script> 
+        <script>
+            $(function() {
+                $(".tags_enter").blur(function() { //焦点失去触发
+                    addTag($(this));
+                    $(this).parents(".tags").css({"border-color": "#d5d5d5"})
+                }).keydown(function(event) {
+                    var key_code = event.keyCode;
+                    if (key_code == 13) { //enter
+                        addTag($(this));
+                    }
+                });
+                $(".close").live("click", function() {
+                    $(this).parent(".tag").remove();
+                });
+                $(".tags").click(function() {
+                    $(this).css({"border-color": "#f59942"})
+                }).blur(function() {
+                    $(this).css({"border-color": "#d5d5d5"})
+                })
+            })
+            function addTag(obj) {
+                var tag = obj.val();
+                if (tag != '') {
+                    var i = 0;
+                    $(".tag").each(function() {
+                        if ($(this).text() == tag + "×") {
+                            $(this).addClass("tag-warning");
+                            setTimeout("removeWarning()", 400);
+                            i++;
+                        }
+                    })
+                    obj.val('');
+                    if (i > 0) { //说明有重复
+                        return false;
+                    }
+                    $("#form-field-tags").before("<span class='tag'>" + tag + "<button class='close' type='button'>×</button></span>"); //添加标签
+                }
+            }
+            function removeWarning() {
+                $(".tag-warning").removeClass("tag-warning");
+            }
+        </script>
+    </body>
+</html>
