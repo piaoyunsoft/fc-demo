@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>jQuery+jRange数值范围选择控件_鼠标拖动数值范围</title>
+        <meta name="keywords" content="范围选择,jRange" />
+        <meta name="description" content="本文用两个例子向大家介绍一款范围选择器插件jRange。" />
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="jquery.range.css"/>
+        <style type="text/css">
+            .demo{width:600px; margin:60px auto 10px auto}
+            #g1,#g2{margin-top:50px}
+        </style>
+    </head>
+    <body>
+        
+        <div class="container" id="main">
+            <h2 class="title"><a href="#" target="_blank">jQuery+jRange数值范围选择控件_鼠标拖动数值范围</a></h2>
+            <div class="demo">
+                <input type="hidden" class="single-slider" value="23" />
+                <button id="g1">获取值</button>
+            </div>
+            <div class="demo">
+                <input class="range-slider" type="hidden" value="25,75"/>
+                <button id="g2">获取值</button>
+            </div>
+        </div>
+        <script src="jquery-2.1.4.js"></script>
+        <script src="jquery.range.js"></script>
+        <script>
+            $(function() {
+                $('.single-slider').jRange({
+                    from: 0,//滑动范围的最小值，数字，如0
+                    to: 100,//滑动范围的最大值，数字，如100
+                    step: 1,//步长值，每次滑动大小
+                    scale: [0, 25, 50, 75, 100],//滑动条下方的尺度标签，数组类型，如[0,50,100]
+                    format: '%s',//数值格式
+                    width: 300,//滑动条宽度
+                    showLabels: true,// 是否显示滑动条下方的尺寸标签
+                    showScale: true //是否显示滑块上方的数值标签
+                });
+                $('.range-slider').jRange({
+                    from: 0,
+                    to: 100,
+                    step: 1,
+                    scale: [0, 25, 50, 75, 100],
+                    format: '%s',
+                    width: 300,
+                    showLabels: true,
+                    isRange: true
+                });
+
+                $("#g1").click(function() {
+                    var aa = $(".single-slider").val();
+                    alert(aa);
+                });
+                $("#g2").click(function() {
+                    var aa = $(".range-slider").val();
+                    alert(aa);
+                });
+            });
+        </script>
+    </body>
+</html>
+
