@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>演示:jQuery Lightbox效果插件</title>
+        <link rel="stylesheet" href="css/jquery.fs.boxer.css">
+    </head>
+
+    <body>
+        <h1 style="margin: 40px; font: 32px Microsoft Yahei; text-align: center;">jQuery Lightbox效果插件Boxer演示1</h1>
+
+        <div class="menu">
+            <a class="cur" href="index.html">演示1（基本）</a>
+            <a href="index2.html">演示2（组图）</a>
+            <a href="index3.html">演示3（视频）</a>
+            <a href="index4.html">演示4（移动设备）</a>
+            <a href="index5.html">演示5（固定）</a>
+            <a href="index6.html">演示6（iframe）</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a title="标题闪电闪电" class="boxer" href="images/1b.jpg">
+                <img src="images/1s.jpg" alt="">
+            </a>
+        </div>
+
+        <script type="text/javascript" src="http://www.sucaihuo.com/Public/js/other/jquery.js"></script> 
+        <script src="js/jquery.fs.boxer.js"></script>
+        <script>
+            $(function() {
+                $('.boxer').boxer({
+                    requestKey: 'abc123'
+                });
+            });
+        </script>
+    </body>
+</html>
