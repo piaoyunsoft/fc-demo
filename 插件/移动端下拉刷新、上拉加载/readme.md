@@ -41,19 +41,13 @@ Zepto or jQuery 1.7+，recommend to use jQuery 2.x（not use them at the same ti
 参数|说明|默认值|可填值
 ----|----|----|----
 scrollArea|滑动区域|绑定元素自身|window
-domUp| 上方DOM |{domClass : 'dropload-up',domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',domUpdate: '<div class="dropload-update">↑释放更新</div>',domLoad : '<div class="dropload-load">○加载中...</div>'}| 数组
-domDown |下方DOM|{domClass : 'dropload-down',domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',domLoad : '<div class="dropload-load">○加载中...</div>',domNoData : '<div class="dropload-noData">暂无数据</div>'}| 数组
+domUp| 上方DOM |`{domClass : 'dropload-up',domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',domUpdate: '<div class="dropload-update">↑释放更新</div>',domLoad : '<div class="dropload-load">○加载中...</div>'}`| 数组
+domDown |下方DOM|`{domClass : 'dropload-down',domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',domLoad : '<div class="dropload-load">○加载中...</div>',domNoData : '<div class="dropload-noData">暂无数据</div>'}`| 数组
 autoLoad|自动加载|true|true和false
 distance|拉动距离|50|数字
 threshold| 提前加载距离|加载区高度2/3|正整数
-loadUpFn|上方function|空| function(me){
-//你的代码
-me.resetload();
-}
-loadDownFn|下方function|空| function(me){
-//你的代码
-me.resetload();
-}
+loadUpFn|上方function|空|`function(me){//你的代码 me.resetload();}`
+loadDownFn|下方function|空|`function(me){//你的代码 me.resetload();}`
 
 
 #API
