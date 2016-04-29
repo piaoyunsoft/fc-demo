@@ -1,5 +1,7 @@
 > 插件描述：移动端下拉刷新、上拉加载更多插件
+
 #依赖 (dependence)
+
 Zepto 或者 jQuery 1.7以上版本，推荐jQuery 2.x版本（二者不要同时引用） 
 
 Zepto or jQuery 1.7+，recommend to use jQuery 2.x（not use them at the same time）
@@ -42,7 +44,7 @@ scrollArea|滑动区域|绑定元素自身|window
 domUp| 上方DOM| {
 domClass : 'dropload-up',
 domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
-domUpdate|: '<div class="dropload-update">↑释放更新</div>',
+domUpdate: '<div class="dropload-update">↑释放更新</div>',
 domLoad : '<div class="dropload-load">○加载中...</div>'
 }| 数组
 domDown 下方DOM| {
