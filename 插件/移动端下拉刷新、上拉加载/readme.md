@@ -38,20 +38,11 @@ Zepto or jQuery 1.7+，recommend to use jQuery 2.x（not use them at the same ti
 > （注明：所有示例里ajax和setTimeout都是为了模拟加载效果而写的，与本插件无直接关系。ajax建议自己写，无特殊情况不必copy我的ajax写法，因为写得太烂。如需下载本地运行，请在本机装服务器环境，否则ajax会报错。）
 
 #参数列表 (options)
-参数|说明|默认值 可填值
-----|----|----
+参数|说明|默认值|可填值
+----|----|----|----
 scrollArea|滑动区域|绑定元素自身|window
-domUp| 上方DOM |{domClass : 'dropload-up',
-domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
-domUpdate: '<div class="dropload-update">↑释放更新</div>',
-domLoad : '<div class="dropload-load">○加载中...</div>'
-}| 数组
-domDown 下方DOM| {
-domClass : 'dropload-down',
-domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
-domLoad : '<div class="dropload-load">○加载中...</div>',
-domNoData : '<div class="dropload-noData">暂无数据</div>'
-}| 数组
+domUp| 上方DOM |{domClass : 'dropload-up',domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',domUpdate: '<div class="dropload-update">↑释放更新</div>',domLoad : '<div class="dropload-load">○加载中...</div>'}| 数组
+domDown |下方DOM|{domClass : 'dropload-down',domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',domLoad : '<div class="dropload-load">○加载中...</div>',domNoData : '<div class="dropload-noData">暂无数据</div>'}| 数组
 autoLoad|自动加载|true|true和false
 distance|拉动距离|50|数字
 threshold| 提前加载距离|加载区高度2/3|正整数
