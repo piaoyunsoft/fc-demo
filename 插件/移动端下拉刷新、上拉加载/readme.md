@@ -41,8 +41,7 @@ Zepto or jQuery 1.7+，recommend to use jQuery 2.x（not use them at the same ti
 参数|说明|默认值 可填值
 ----|----|----
 scrollArea|滑动区域|绑定元素自身|window
-domUp| 上方DOM| {
-domClass : 'dropload-up',
+domUp| 上方DOM |{domClass : 'dropload-up',
 domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
 domUpdate: '<div class="dropload-update">↑释放更新</div>',
 domLoad : '<div class="dropload-load">○加载中...</div>'
