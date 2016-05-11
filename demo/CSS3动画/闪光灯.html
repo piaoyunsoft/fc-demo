@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{background-color: #333;}
+		div{width: 100px;height: 100px;background-color: #fff;margin: 200px auto;}
+		#animation:hover{
+			-webkit-animation:flash 1s .2s ease both;
+			-moz-animation:flash 1s .2s ease both;}
+			@-webkit-keyframes flash{
+			0%,50%,100%{opacity: 1;}
+			25%,75%{opacity: 0;}
+		}
+		@-moz-keyframes flash{
+			0%,50%,100%{opacity: 1;}
+			25%,75%{opacity: 0;}
+		}
+	</style>
+</head>
+<body>
+	<div id="animation"></div>
+</body>
+</html>
