@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{background-color: #333;}
+		div{width: 100px;height: 100px;background-color: #fff;margin: 200px auto;}
+		#animation:hover{
+			-webkit-animation:swing 1s .2s ease both;
+			-moz-animation:swing 1s .2s ease both;}
+			@-webkit-keyframes swing{
+			20%,40%,60%,80%,100%{-webkit-transform-origin:top center}
+			20%{-webkit-transform:rotate(15deg)}
+			40%{-webkit-transform:rotate(-10deg)}
+			60%{-webkit-transform:rotate(5deg)}
+			80%{-webkit-transform:rotate(-5deg)}
+			100%{-webkit-transform:rotate(0deg)}
+		}
+		@-moz-keyframes swing{
+			20%,40%,60%,80%,100%{-moz-transform-origin:top center}
+			20%{-moz-transform:rotate(15deg)}
+			40%{-moz-transform:rotate(-10deg)}
+			60%{-moz-transform:rotate(5deg)}
+			80%{-moz-transform:rotate(-5deg)}
+			100%{-moz-transform:rotate(0deg)}
+		}
+	</style>
+</head>
+<body>
+	<div id="animation"></div>
+</body>
+</html>

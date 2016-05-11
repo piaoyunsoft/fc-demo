@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{background-color: #333;}
+		div{width: 100px;height: 100px;background-color: #fff;margin: 200px auto;}
+		#animation:hover{
+			-webkit-animation:pulse 1s .2s ease both;
+			-moz-animation:pulse 1s .2s ease both;}
+			@-webkit-keyframes pulse{
+			0%{-webkit-transform:scale(1)}
+			50%{-webkit-transform:scale(1.1)}
+			100%{-webkit-transform:scale(1)}
+		}
+		@-moz-keyframes pulse{
+			0%{-moz-transform:scale(1)}
+			50%{-moz-transform:scale(1.1)}
+			100%{-moz-transform:scale(1)}
+		}
+	</style>
+</head>
+<body>
+	<div id="animation"></div>
+</body>
+</html>
