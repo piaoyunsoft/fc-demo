@@ -28,7 +28,7 @@
 
 - [脉冲](脉冲.html)
 
-
+![](http://i.imgur.com/Ccyq1Oc.gif)
 
 ###翻转
 
