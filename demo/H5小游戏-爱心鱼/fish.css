@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.all_bg{
+	width: 800px;
+	height: 600px;
+	margin: 100px auto;
+	/*background: url(img/background.jpg) no-repeat center;*/
+}
+#allcanvas{
+	position: relative;
+	width: 800px;
+	height: 600px;
+}
+canvas{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#canvas1{
+	z-index: 1;
+}
+#canvas2{
+	z-index: 0;
+}
