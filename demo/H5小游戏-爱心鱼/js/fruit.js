@@ -2,6 +2,7 @@ var fruitObj = function(){
 	this.alive = [];	//boolean
 	this.x = [];	//图片坐标
 	this.y = [];	//图片坐标
+	this.aneNo = [];
 	this.l = [];	//图片长度（大小）
 	this.spd = [];	//果实速度
 	this.fruitType = [];	//果实类型
@@ -15,6 +16,7 @@ fruitObj.prototype.init = function(){
 		this.alive[i] = false;
 		this.x[i] = 0;
 		this.y[i] = 0;
+		this.aneNo[i] = 0;
 		this.spd[i] = Math.random() * 0.017 + 0.003;	//[0.003,0.02)
 		this.fruitType[i] = '';
 	};
@@ -41,11 +43,15 @@ fruitObj.prototype.draw = function(){
 			}
 
 			if(this.l[i] <= 15){
+				var No = this.aneNo[i];
+				this.x[i] = ane.headx[No];
+				this.y[i] = ane.heady[No];
 				this.l[i] += this.spd[i] * deltaTime;
+				ctx2.drawImage(pic, this.x[i] - this.l[i] / 2, this.y[i] - this.l[i] / 2,this.l[i], this.l[i]);
 			}else{
 				this.y[i] -= this.spd[i] * 7 * deltaTime;
+				ctx2.drawImage(pic, this.x[i] - this.l[i] / 2, this.y[i] - this.l[i] / 2,this.l[i], this.l[i]);
 			}
-			ctx2.drawImage(pic, this.x[i] - this.l[i] / 2, this.y[i] - this.l[i] / 2,this.l[i], this.l[i]);
 
 			if(this.y[i] < 10){//-10?
 				this.alive[i] = false;
@@ -61,9 +67,7 @@ fruitObj.prototype.draw = function(){
  * @date    2016-06-20
  */
 fruitObj.prototype.born = function(i){
-	var aneId = Math.floor(Math.random() * ane.num);
-	this.x[i] = ane.x[aneId];
-	this.y[i] = canHeight - ane.h[aneId];
+	this.aneNo[i] = Math.floor(Math.random() * ane.num);
 	this.l[i] = 0;
 	this.alive[i] = true;
 	var ran = Math.random();
