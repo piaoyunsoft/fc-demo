@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Resizeble</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{padding: 50px;font-size: 14px;color: #333;}
+		.panel{width: 400px;height: 240px;border: 1px solid #ccc;position: relative;}
+		.title{background-color: #eee;text-align: center;line-height: 30px;border: 1px solid #fff;font-weight: bold;}
+		.ui-Resizeble-r{position: absolute;right: 0;top: 0;width: 10px;height: 100%;cursor: e-resize;}
+		.ui-Resizeble-b{position: absolute;bottom: 0;left: 0;width: 100%;height: 10px;cursor: s-resize;}
+		.ui-Resizeble-rb{position: absolute;right: 0;bottom: 0;width: 20px;height: 20px;cursor: nw-resize;}
+	</style>
+</head>
+<body>
+	<div class="panel" id="ui-resizeble">
+		<div class="title">Resizeble Panel</div>
+		<!-- <div class="ui-Resizeble-r"></div>
+		<div class="ui-Resizeble-b"></div>
+		<div class="ui-Resizeble-rb"></div> -->
+	</div>
+
+	<script>
+		var m_panel,m_ctrl,m_type;	//panel 面板，ctrl 控制元素，type 类型
+		var moving = 0;	//鼠标是否按在控制元素，开始拖动
+		var m_start_x = 0;	//鼠标开始位置
+		var m_start_y = 0;	//鼠标开始位置
+		var m_to_x = 0;	//鼠标新的位置
+		var m_to_y = 0;	//鼠标新的位置
+
+		// step2 为控制元素支持拖拽
+		/**
+		 * [onMouseDown 为控制元素支持拖拽]
+		 * @author fuchong
+		 * @version 1.0
+		 * @date    2016-07-22
+		 * @param   {[obj]}   e     [事件对象]
+		 * @param   {[obj]}   panel [面板]
+		 * @param   {[obj]}   ctrl  [控制元素]
+		 * @param   {[str]}   type  [类型]
+		 */
+		function onMouseDown(e, panel, ctrl, type){
+			var e = e || window.event;
+			// 计算鼠标在页面上的位置
+			// 鼠标相对于当前元素的位置
+			m_start_x = e.pageX - ctrl.offsetLeft;
+			m_start_y = e.pageY - ctrl.offsetTop;
+			m_panel = panel;
+			m_ctrl = ctrl;
+			m_type = type;
+
+			// 开始侦听处理移动事件
+			moving = setInterval(onMove, 10);
+		}
+
+		function onMove(){
+			if(moving){
+				var min_left = m_panel.offsetLeft;
+				var min_top = m_panel.offsetTop;
+				var to_x = m_to_x - m_start_x;
+				var to_y = m_to_y - m_start_y;
+
+				to_x = Math.max(to_x, min_left);
+				to_y = Math.max(to_y, min_top);
+
+				switch(m_type){
+					case 'r':
+						m_ctrl.style.left = to_x + 'px';
+						m_panel.style.width = to_x + 10 + 'px';
+					break;
+					case 'b':
+						m_ctrl.style.top = to_y + 'px';
+						m_panel.style.height = to_y + 10 + 'px';
+					break;
+					case 'rb':
+						m_ctrl.style.left = to_x + 'px';
+						m_ctrl.style.top = to_y + 'px';
+						m_panel.style.width = to_x + 20 + 'px';
+						m_panel.style.height = to_y + 20 + 'px';
+					break;
+				}
+			}
+		}
+
+		// 处理鼠标在页面上移动的事件
+		document.onmousemove = function(e){
+			var e = window.event || e;
+			m_to_x = e.pageX;
+			m_to_y = e.pageY;
+		}
+
+		// 处理鼠标松开
+		document.onmouseup = function(e){
+			clearInterval(moving);
+			moving = 0;
+			var cls = document.getElementsByClassName('ui-Resizeble-ctrl');
+			for (var i = 0; i < cls.length; i++) {
+				cls[i].style.left = '';
+				cls[i].style.top = '';
+			};
+		}
+
+		// step1 为面板加入控制元素
+		/**
+		 * [resizeble 为面板加入控制元素]
+		 * @author fuchong
+		 * @version 1.0
+		 * @date    2016-07-22
+		 * @param   {[str]}   panelId [面板ID]
+		 */
+		function resizeble(panelId){
+			var panel = document.getElementById(panelId);
+			var r = document.createElement('div');
+			var b = document.createElement('div');
+			var rb = document.createElement('div');
+
+			r.class = r.className = 'ui-Resizeble-r ui-Resizeble-ctrl';
+			b.class = b.className = 'ui-Resizeble-b ui-Resizeble-ctrl';
+			rb.class = rb.className = 'ui-Resizeble-rb ui-Resizeble-ctrl';
+
+			panel.appendChild(r);
+			panel.appendChild(b);
+			panel.appendChild(rb);
+
+			// 为控制元素设置拖拽处理
+			r.addEventListener('mousedown', function(e){
+				onMouseDown(e, panel, r, 'r');
+			});
+
+			b.addEventListener('mousedown', function(e){
+				onMouseDown(e, panel, b, 'b');
+			});
+
+			rb.addEventListener('mousedown', function(e){
+				onMouseDown(e, panel, rb, 'rb');
+			});
+		}
+
+		resizeble('ui-resizeble');
+	</script>
+</body>
+</html>
