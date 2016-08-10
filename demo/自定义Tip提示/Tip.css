@@ -1,0 +1,28 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 14px;
+	padding: 100px;
+}
+ul{
+	list-style: none;
+}
+li{
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 10px;
+	background-color: #4CAF50;
+	color: #fff;
+	text-indent: 2em;
+}
+
+/* Tip style */
+.fc-tip{
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	position: fixed;
+}
